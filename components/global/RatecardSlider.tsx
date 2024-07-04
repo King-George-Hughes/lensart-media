@@ -64,7 +64,7 @@ export function RatecardSlider() {
       plugins={[plugin.current]}
       className="w-full"
       onMouseEnter={plugin.current.stop}
-      onMouseLeave={plugin.current.play}
+      onMouseLeave={() => plugin.current.play()}
       opts={{
         align: "start",
         loop: true,
