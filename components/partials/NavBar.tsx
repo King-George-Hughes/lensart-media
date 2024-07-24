@@ -79,7 +79,7 @@ const NavBar = () => {
           ? "border-b-[1px] border-gray-100 bg-white/90 text-black/80 backdrop-blur-md"
           : pathname !== "/"
             ? "bg-white text-black/80"
-            : "text-primary-foreground border-transparent bg-transparent"
+            : "border-transparent bg-transparent text-primary-foreground"
       } z-30 flex items-center justify-between uppercase duration-500`}
     >
       <aside className="flex items-center gap-[2px]">
@@ -88,7 +88,7 @@ const NavBar = () => {
           className="text-lg font-bold md:text-xl"
           style={{ fontWeight: "bolder" }}
         >
-          Logo
+          Lensart Media
         </Link>
       </aside>
 
@@ -101,7 +101,7 @@ const NavBar = () => {
                   <NavigationMenuLink
                     className={cn(
                       navigationMenuTriggerStyle(),
-                      `rounded-none ${pathname === link.url ? `border-b-primary border-b-2` : `hover:border-primary hover:border-b-black/90`}`,
+                      `rounded-none ${pathname === link.url ? `text-primary` : `hover:text-primary/70`}`,
                     )}
                   >
                     {link.name}
@@ -120,20 +120,20 @@ const NavBar = () => {
           </SheetTrigger>
           <SheetContent
             side={"left"}
-            className="z-50 border-white/90 bg-white/90 text-white"
+            className="z-50 border-white bg-white text-black"
           >
             <SheetHeader>
-              <SheetTitle className="text-primary mt-5">
+              <SheetTitle className="mt-5 text-primary">
                 LENSART MEDIA
               </SheetTitle>
 
               <SheetDescription>
-                <div className="text-primary-foreground mt-5 grid grid-cols-1 gap-2">
+                <div className="mt-5 grid grid-cols-1 gap-2 text-primary-foreground">
                   {navItems.map((menu) => (
                     <SheetClose asChild key={menu.name}>
                       <Link
                         href={menu.url}
-                        className={`inline-flex w-full items-center justify-between border-b-[1px] border-white/90 px-2 py-2 transition-colors duration-300 ${pathname === menu.url ? `text-primary` : `hover:text-primary text-black/80`}`}
+                        className={`inline-flex w-full items-center justify-between border-b-[1px] border-white/90 px-2 py-2 transition-colors duration-300 ${pathname === menu.url ? `text-primary` : `text-black/80 hover:text-primary`}`}
                       >
                         {menu.name} <ChevronRight />
                       </Link>
@@ -173,12 +173,12 @@ const ListItem = ({ className, title, children, href }: Props) => {
         <Link
           href={href}
           className={cn(
-            "hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground block select-none space-y-1 rounded-sm bg-transparent p-3 leading-none no-underline outline-none",
+            "block select-none space-y-1 rounded-sm bg-transparent p-3 leading-none no-underline outline-none hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
             className,
           )}
         >
           <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="text-muted-foreground line-clamp-2 text-sm capitalize leading-snug">
+          <p className="line-clamp-2 text-sm capitalize leading-snug text-muted-foreground">
             {children}
           </p>
         </Link>

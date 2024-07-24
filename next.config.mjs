@@ -6,10 +6,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "api.stepfordstudios.com",
       },
-      // {
-      //   protocol: "http",
-      //   hostname: "localhost",
-      // },
+      {
+        protocol: "http",
+        hostname: "localhost",
+      },
       {
         protocol: "https",
         hostname: "res.cloudinary.com",
