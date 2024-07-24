@@ -1,6 +1,4 @@
-import React from "react";
-
-const BlogDetailLoader = () => {
+const loading = () => {
   return (
     <div className="flex h-screen w-full items-center justify-center">
       <div
@@ -15,4 +13,4 @@ const BlogDetailLoader = () => {
   );
 };
 
-export default BlogDetailLoader;
+export default loading;

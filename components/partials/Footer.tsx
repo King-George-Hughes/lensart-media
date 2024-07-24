@@ -22,7 +22,7 @@ const Footer = () => {
         <div className="container grid gap-10 text-slate-500 md:grid-cols-2 lg:grid-cols-3">
           <div>
             <h4 className="text-2xl font-extrabold uppercase tracking-wider text-slate-900">
-              Logo
+              Lensart Media
             </h4>
             <p className="mt-10 text-sm">
               The world without photography will be meaningless to us if there
@@ -33,7 +33,7 @@ const Footer = () => {
 
           <div>
             <h4 className="text-xl font-semibold tracking-wider text-slate-900">
-              Latest Photos
+              Useful Links
             </h4>
 
             <div className="mb-5 mt-3 h-[2px] w-[50px] border-none bg-primary" />

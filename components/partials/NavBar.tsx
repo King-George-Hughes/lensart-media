@@ -1,8 +1,18 @@
 "use client";
 
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
+import { cn } from "@/lib/utils";
 import { ChevronRight, MenuIcon } from "lucide-react";
 import Link from "next/link";
-import React, { ReactNode, useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { ReactNode, useEffect, useState } from "react";
+import { FaFacebookF, FaInstagram } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import {
   Sheet,
   SheetClose,
@@ -13,19 +23,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "../ui/sheet";
-import { usePathname } from "next/navigation";
-import { FaFacebookF, FaInstagram } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
-import { cn } from "@/lib/utils";
 
 const navItems = [
   {
@@ -85,7 +82,7 @@ const NavBar = () => {
       <aside className="flex items-center gap-[2px]">
         <Link
           href="/"
-          className="text-lg font-bold md:text-xl"
+          className="text-md font-bold md:text-lg"
           style={{ fontWeight: "bolder" }}
         >
           Lensart Media

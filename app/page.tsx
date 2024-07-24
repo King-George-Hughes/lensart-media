@@ -8,8 +8,6 @@ import { carouselData } from "@/lib/constant";
 export default function Home() {
   return (
     <main>
-      {/* <FloatingSocialMedia /> */}
-
       <CarouselHero data={carouselData} />
 
       <div className="h-full w-full bg-gray-100">

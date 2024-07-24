@@ -8,14 +8,12 @@ import useShowBlog from "@/hooks/blog/useShowBlog";
 import { formatDate } from "@/lib/helper";
 import { useBlogs } from "@/hooks/blog/useBlogs";
 import BlogDetailLoader from "./_components/BlogDetailLoader";
-import RelatedPostsLoader from "./_components/RelatedPostsLoader";
 
 interface Props {
   params: { slug: string };
 }
 
 const BlogDetailPage = ({ params }: Props) => {
-  const relatePostsLoaders = [1, 2, 3];
   const { data: blog, isLoading } = useShowBlog(params.slug);
   const { data: blogs, isLoading: isLoadingBlogs } = useBlogs();
 
@@ -56,15 +54,12 @@ const BlogDetailPage = ({ params }: Props) => {
             <div className="my-7 h-[1.5px] w-[30px] border-none bg-primary" />
 
             <div className="grid grid-cols-1 gap-5">
-              {isLoadingBlogs
-                ? relatePostsLoaders.map((skeloton) => (
-                    <RelatedPostsLoader key={skeloton} />
-                  ))
-                : blogs?.data
-                    .slice(0, 4)
-                    .map((blog, index) => (
-                      <RelatedPost key={index} blog={blog} />
-                    ))}
+              {!isLoadingBlogs &&
+                blogs?.data
+                  .slice(0, 4)
+                  .map((blog, index) => (
+                    <RelatedPost key={index} blog={blog} />
+                  ))}
             </div>
           </div>
         </div>

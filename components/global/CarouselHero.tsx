@@ -58,15 +58,16 @@ export function CarouselHero({ data }: Props) {
             <div className="relative flex h-screen w-full items-center justify-center">
               <Image
                 src={image.image}
-                fill
+                width={1200}
+                height={1200}
                 priority
                 alt={image.title}
                 className="absolute h-full w-full object-cover"
               />
 
               <>
-                <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-32 border-none bg-gradient-to-b from-black/60" />
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 z-30 h-32 border-none bg-gradient-to-t from-black/60" />
+                <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-32 border-none bg-gradient-to-b from-black/80" />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 z-30 h-32 border-none bg-gradient-to-t from-black/80" />
               </>
 
               <MotionDiv
@@ -75,16 +76,12 @@ export function CarouselHero({ data }: Props) {
                 variants={textVariants}
                 className="container z-50 flex flex-col items-center"
               >
-                <MotionP className="py-4 text-center text-xl font-bold text-white/90 md:text-5xl">
-                  {image.title}
+                <MotionP className="py-4 text-center font-bold text-white/90">
+                  <span className="text-xl md:text-5xl">Welcome to</span> <br />
+                  <span className="text-xl text-primary md:text-5xl">
+                    Lensart Media
+                  </span>
                 </MotionP>
-                <Link
-                  href={image.url!}
-                  className="relative mt-2 border border-primary/50 bg-primary/40 px-4 py-2 text-center text-white backdrop-blur-sm md:mt-4"
-                >
-                  <span>{image.urlName}</span>
-                  <div className="absolute inset-x-0 -bottom-px mx-auto h-px w-3/4 bg-gradient-to-r from-transparent via-primary to-transparent" />
-                </Link>
               </MotionDiv>
             </div>
           </CarouselItem>

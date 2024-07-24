@@ -1,33 +1,27 @@
 export const carouselData = [
   {
-    title: "Love will tear us apart",
+    title: "A very nice title here",
     url: "/ratecard/wedding",
     urlName: "Wedding Ratecard",
     image: "/images/hero/1.jpg",
   },
   {
-    title: "Men from the north country",
+    title: "A very nice title here",
     url: "/blog",
     urlName: "Blog Posts",
     image: "/images/hero/2.jpg",
   },
   {
-    title: "City of stars",
+    title: "A very nice title here",
     url: "/ratecard/photoshoot",
     urlName: "Photoshoot Ratecard",
     image: "/images/hero/3.jpg",
   },
   {
-    title: "Men from the north country",
+    title: "A very nice title here",
     url: "/blog",
     urlName: "Blog Posts",
     image: "/images/hero/4.jpg",
-  },
-  {
-    title: "City of stars",
-    url: "/ratecard/photoshoot",
-    urlName: "Photoshoot Ratecard",
-    image: "/images/hero/5.jpg",
   },
 ];
 
