@@ -14,21 +14,20 @@ interface Props {
 
 const RelatedPost = ({ blog }: Props) => {
   return (
-    <div className="w-full flex items-start gap-5">
+    <div className="flex w-full items-start gap-5">
       <Link href={`/blog/${blog.slug}`}>
         <Image
           src={blog.image}
           width={100}
           height={100}
           alt={blog.title!}
-          className="w-[80px] h-[70px] object-cover"
+          className="h-[60px] w-[80px] rounded-md object-cover"
         />
       </Link>
-      <div className="">
+      <div className="flex h-full items-center">
         <Link href={`/blog/${blog.slug}`}>
-          <h4 className="font-bold">{blog.title}</h4>
+          <h4 className="">{blog.title?.substring(0, 20)}...</h4>
         </Link>
-        <small className="text-primary font-semibold">June 10, 2024</small>
       </div>
     </div>
   );

@@ -1,9 +1,8 @@
 "use client";
 
-import * as React from "react";
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
-import Link from "next/link";
+import * as React from "react";
 
 import {
   Carousel,
@@ -17,14 +16,12 @@ const ratecardImages = [
     image:
       "https://res.cloudinary.com/dg4k5afvg/image/upload/w_800,q_80/v1717932585/stepford/studio/5_e4wcyj.jpg",
     price: 35,
-    url: "#!",
   },
   {
     title: "Lifestyle",
     image:
       "https://res.cloudinary.com/dg4k5afvg/image/upload/w_800,q_80/v1717932594/stepford/studio/12_solz2l.jpg",
     price: 29,
-    url: "#!",
   },
 
   {
@@ -32,21 +29,18 @@ const ratecardImages = [
     image:
       "https://res.cloudinary.com/dg4k5afvg/image/upload/w_800,q_80/v1717932561/stepford/studio/43_zdtcdc.jpg",
     price: 49,
-    url: "#!",
   },
   {
     title: "Commercials",
     image:
       "https://res.cloudinary.com/dg4k5afvg/image/upload/w_800,q_80/v1717932548/stepford/studio/28_pkcazg.jpg",
     price: 99,
-    url: "#!",
   },
   {
     title: "Events",
     image:
       "https://res.cloudinary.com/dg4k5afvg/image/upload/w_800,q_80/v1717932558/stepford/studio/41_kqv4sa.jpg",
     price: 50,
-    url: "#!",
   },
 ];
 
@@ -93,13 +87,6 @@ export function RatecardSlider() {
                 <p className="mt-5 text-8xl font-bold uppercase tracking-wider text-black/90">
                   ${image.price}
                 </p>
-
-                <Link
-                  href={image.url}
-                  className="mt-5 border-2 border-primary bg-primary px-7 py-3 text-xs uppercase text-white shadow-md duration-300 hover:border-primary hover:bg-transparent hover:text-primary"
-                >
-                  View More
-                </Link>
               </div>
             </div>
           </CarouselItem>

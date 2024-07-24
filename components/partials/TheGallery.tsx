@@ -21,25 +21,6 @@ import { cn } from "@/lib/utils";
 import { ChevronDown } from "lucide-react";
 import Spinner from "../global/Spinner";
 
-const sortValues = [
-  {
-    name: "All",
-    value: "",
-  },
-  {
-    name: "Studio",
-    value: "studio",
-  },
-  {
-    name: "Wedding",
-    value: "wedding",
-  },
-  {
-    name: "Lifestyle",
-    value: "lifestyle",
-  },
-];
-
 interface Props {
   title?: string;
   subtitle?: string;
@@ -54,42 +35,18 @@ const TheGalleryComponent = ({ title, subtitle }: Props) => {
     useImages();
   // useImages(pageSize);
 
-  const filteredImages =
-    data?.pages
-      // .flatMap((page) => page.images)
-      .flatMap((page) => page)
-      .filter((image) =>
-        selectedValue ? image.title.toLowerCase() === selectedValue : true,
-      ) || [];
+  const filteredImages = data?.pages.flatMap((page) => page) || [];
 
   return (
     <div className="my-20 md:my-24">
       <div className="mb-5 text-center">
         <h3 className="text-3xl font-bold lg:text-4xl">
-          {title ? title : "Latest"}{" "}
-          <span className="text-primary">{subtitle ? subtitle : "Works"}</span>
+          {title ? title : "Recent"}{" "}
+          <span className="text-primary">
+            {subtitle ? subtitle : "Gallery"}
+          </span>
         </h3>
         <div className="mx-auto my-5 h-[1.5px] w-[40px] bg-primary" />
-
-        <div className="mx-auto mb-2 inline-flex items-center gap-2">
-          {sortValues.map((sort) => (
-            <Link
-              key={sort.value}
-              href={`?gallery=${sort.value}`}
-              className={cn(
-                `${
-                  selectedValue === sort.value
-                    ? "border-b-[2px] border-b-primary"
-                    : ""
-                }`,
-                "px-2 py-1 text-black/80",
-              )}
-              scroll={false}
-            >
-              {sort.name}
-            </Link>
-          ))}
-        </div>
       </div>
 
       <LightGallery
@@ -104,28 +61,20 @@ const TheGalleryComponent = ({ title, subtitle }: Props) => {
             <LazyLoadImage
               image={image.image}
               alt={image.title}
-              className={"mb-5 hover:scale-[1.02]"}
+              className={"mb-5 rounded-lg hover:scale-[1.02]"}
             />
           </Link>
         ))}
       </LightGallery>
 
-      {/* <div className="mt-10">
-        <Button onClick={() => fetchNextPage()} disabled={isFetchingNextPage}>
-          {isFetchingNextPage
-            ? "Load more..."
-            : (data.pages.length ?? 0) < 11
-              ? "Load More"
-              : "Nothing more to load"}
-        </Button>
-      </div> */}
       <div className="relative my-10 flex h-fit w-full items-center justify-center">
         {isFetching && !isFetchingNextPage && <Spinner />}
         {!isFetchingNextPage && hasNextPage && (
           <Button
             onClick={() => fetchNextPage()}
-            variant={"link"}
-            className="inline-flex items-end gap-2"
+            // variant={"link"}
+            size={"sm"}
+            className="inline-flex items-center gap-2"
           >
             Load More <ChevronDown size={20} />
           </Button>

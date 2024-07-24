@@ -35,7 +35,7 @@ const ContactPage = () => {
               <div className="flex h-[55px] w-[55px] items-center justify-center rounded-full border-[1.5px] border-primary">
                 <Mail size={20} />
               </div>
-              <p>info@stepfordstudios.com</p>
+              <p>support@lensartmedia.com</p>
             </div>
 
             <div className="inline-flex w-full flex-row items-center gap-5">

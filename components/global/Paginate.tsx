@@ -41,7 +41,7 @@ const Pagination: React.FC<PaginationProps> = ({ count, perPage = 6 }) => {
     <div className="mt-5 flex w-full items-center justify-between px-2 py-5">
       <div className="hidden md:block">
         <p>
-          Showing <strong>{(currentPage - 1) * perPage + 1}</strong> to{" "}
+          <strong>{(currentPage - 1) * perPage + 1}</strong> to{" "}
           <strong>
             {currentPage === pageCount ? count : currentPage * perPage}
           </strong>{" "}
@@ -52,23 +52,23 @@ const Pagination: React.FC<PaginationProps> = ({ count, perPage = 6 }) => {
       <div className="flex w-full items-center justify-between gap-3 md:w-fit md:justify-normal">
         <button
           className={`${
-            currentPage === 1 ? "bg-neutral-100" : "bg-neutral-800 text-white"
+            currentPage === 1 ? "bg-neutral-100" : "bg-primary text-white"
           } inline-flex items-center rounded-sm px-3 py-2 font-bold`}
           onClick={prevPage}
           disabled={currentPage === 1}
         >
-          <ChevronLeft /> Prev
+          Prev
         </button>
         <button
           className={`${
             currentPage === pageCount
               ? "bg-neutral-100"
-              : "bg-neutral-800 text-white"
+              : "bg-primary text-white"
           } inline-flex items-center rounded-sm px-3 py-2 font-bold`}
           onClick={nextPage}
           disabled={currentPage === pageCount}
         >
-          Next <ChevronRight />
+          Next
         </button>
       </div>
     </div>

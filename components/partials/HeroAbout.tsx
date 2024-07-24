@@ -10,7 +10,7 @@ const HeroAbout = () => {
         <StaggerContainerMotion>
           <MotionDiv
             variants={slideIn("left", "tween", 0.1, 0.5)}
-            className="relative mx-auto h-[400px] w-full overflow-hidden rounded-sm md:h-[500px] lg:h-[600px]"
+            className="relative mx-auto h-[400px] w-full overflow-hidden rounded-lg md:h-[500px] lg:h-[600px]"
           >
             <Image
               src="/images/IMG_8205.jpg"

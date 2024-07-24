@@ -21,17 +21,29 @@ const BlogDetailPage = ({ params }: Props) => {
 
   return (
     <div className="mt-24 md:mt-32">
-      <div className="container grid grid-cols-6 gap-7">
+      <div className="container grid grid-cols-6 gap-8">
+        <div className="col-span-6 pb-20 md:col-span-2">
+          <div className="w-full rounded-lg border-2 p-5">
+            <h4 className="mb-8 text-xl font-bold">Related Posts</h4>
+
+            <div className="grid grid-cols-1 gap-5">
+              {!isLoadingBlogs &&
+                blogs?.data
+                  .slice(0, 4)
+                  .map((blog, index) => (
+                    <RelatedPost key={index} blog={blog} />
+                  ))}
+            </div>
+          </div>
+        </div>
         <div className="col-span-6 w-full space-y-5 pb-20 md:col-span-4">
-          <h4 className="text-4xl font-bold">{blog?.title}</h4>
-
-          <div className="my-4 h-[1.5px] w-[50px] border-none bg-primary" />
-
-          <small className="font-semibold text-primary">
+          <small className="block text-center font-semibold text-primary">
             {formatDate(blog?.created_at)}
           </small>
 
-          <div className="w-full">
+          <h4 className="text-center text-3xl font-bold">{blog?.title}</h4>
+
+          <div className="w-full overflow-hidden rounded-lg">
             <Image
               src={blog?.image!}
               width={800}
@@ -42,25 +54,8 @@ const BlogDetailPage = ({ params }: Props) => {
             />
           </div>
 
-          <div className="md:text-md prose min-w-full text-sm font-light">
+          <div className="md:text-md prose min-w-full">
             <ReactMarkdown>{blog?.description}</ReactMarkdown>
-          </div>
-        </div>
-
-        <div className="col-span-6 pb-20 md:col-span-2">
-          <div className="w-full border-[1px] p-5">
-            <h4 className="mb-5 text-xl font-bold">Related Posts</h4>
-
-            <div className="my-7 h-[1.5px] w-[30px] border-none bg-primary" />
-
-            <div className="grid grid-cols-1 gap-5">
-              {!isLoadingBlogs &&
-                blogs?.data
-                  .slice(0, 4)
-                  .map((blog, index) => (
-                    <RelatedPost key={index} blog={blog} />
-                  ))}
-            </div>
           </div>
         </div>
       </div>

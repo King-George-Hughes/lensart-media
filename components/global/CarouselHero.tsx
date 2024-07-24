@@ -42,52 +42,55 @@ export function CarouselHero({ data }: Props) {
   );
 
   return (
-    <Carousel
-      plugins={[plugin.current]}
-      className="w-full"
-      onMouseEnter={() => plugin.current.stop()}
-      onMouseLeave={() => plugin.current.play()}
-      opts={{
-        align: "start",
-        loop: true,
-      }}
-    >
-      <CarouselContent className="-ml-1">
-        {data.map((image, index) => (
-          <CarouselItem key={index} className="-pl-1 md:basis">
-            <div className="relative flex h-screen w-full items-center justify-center">
-              <Image
-                src={image.image}
-                width={1200}
-                height={1200}
-                priority
-                alt={image.title}
-                className="absolute h-full w-full object-cover"
-              />
+    <div className="relative flex items-center justify-center">
+      <Carousel
+        plugins={[plugin.current]}
+        className="w-full"
+        onMouseEnter={() => plugin.current.stop()}
+        onMouseLeave={() => plugin.current.play()}
+        opts={{
+          align: "start",
+          loop: true,
+        }}
+      >
+        <CarouselContent className="-ml-1">
+          {data.map((image, index) => (
+            <CarouselItem key={index} className="-pl-1 md:basis">
+              <div className="relative flex h-screen w-full items-center justify-center">
+                <Image
+                  src={image.image}
+                  width={1200}
+                  height={1200}
+                  priority
+                  alt={image.title}
+                  className="absolute h-full w-full object-cover"
+                />
 
-              <>
-                <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-32 border-none bg-gradient-to-b from-black/80" />
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 z-30 h-32 border-none bg-gradient-to-t from-black/80" />
-              </>
+                <>
+                  <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-32 border-none bg-gradient-to-b from-black/80" />
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 z-30 h-32 border-none bg-gradient-to-t from-black/80" />
+                </>
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
 
-              <MotionDiv
-                initial="initial"
-                animate="visible"
-                variants={textVariants}
-                className="container z-50 flex flex-col items-center"
-              >
-                <MotionP className="py-4 text-center font-bold text-white/90">
-                  <span className="text-xl md:text-5xl">Welcome to</span> <br />
-                  <span className="text-xl text-primary md:text-5xl">
-                    Lensart Media
-                  </span>
-                </MotionP>
-              </MotionDiv>
-            </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-    </Carousel>
+      <MotionDiv
+        initial="initial"
+        animate="visible"
+        variants={textVariants}
+        className="container absolute z-10 flex flex-col items-center"
+      >
+        <MotionP className="py-4 text-center text-white/90">
+          <span className="text-xl md:text-3xl">Welcome to</span> <br />
+          <br />
+          <span className="text-3xl font-bold text-primary md:text-5xl">
+            Lensart Media
+          </span>
+        </MotionP>
+      </MotionDiv>
+    </div>
   );
 }
 

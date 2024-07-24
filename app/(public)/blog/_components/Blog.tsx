@@ -10,7 +10,7 @@ interface Props {
 
 const Blog = ({ blog }: Props) => {
   return (
-    <div className="flex w-full flex-col gap-2 bg-gray-100">
+    <div className="flex w-full flex-col gap-2 overflow-hidden rounded-lg bg-gray-100">
       <Link
         href={`/blog/${blog.slug}`}
         className="flex h-[250px] w-full items-center justify-center"
@@ -23,16 +23,11 @@ const Blog = ({ blog }: Props) => {
           className="h-full w-full object-cover"
         />
       </Link>
-      <div className="space-y-4 p-5">
-        <h3 className="text-xl font-bold">
+      <div className="space-y-2 p-3 text-end">
+        <h3 className="text-xl font-semibold">
           <Link href={`/blog/${blog.slug}`}>{blog.title}</Link>
         </h3>
-        <small className="font-semibold text-primary">
-          {formatDate(blog.created_at)}
-        </small>
-        <p className="pb-3 text-sm tracking-wide">
-          {blog.description.substring(0, 120)}...
-        </p>
+        <p className="pb-3 text-sm">{blog.description.substring(0, 150)}...</p>
       </div>
     </div>
   );

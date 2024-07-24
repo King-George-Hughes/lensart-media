@@ -1,10 +1,3 @@
-import { faqs } from "@/lib/constant";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import TheGallery from "@/components/partials/TheGallery";
 
 const FAQs = () => {
