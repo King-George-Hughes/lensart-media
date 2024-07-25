@@ -8,14 +8,25 @@ import useShowBlog from "@/hooks/blog/useShowBlog";
 import { formatDate } from "@/lib/helper";
 import BlogDetailLoader from "./_components/BlogDetailLoader";
 import useBlogs from "@/hooks/blog/useBlogs";
+import Link from "next/link";
+import { Edit } from "lucide-react";
+import EditBlogButton from "./_components/EditBlogButton";
+import DeleteBlogButton from "./_components/DeleteBlogButton";
+import { useSession } from "next-auth/react";
 
 interface Props {
   params: { id: string };
+  searchParams: { page: string };
 }
 
-const BlogDetailPage = ({ params }: Props) => {
+const BlogDetailPage = ({ params, searchParams }: Props) => {
+  const { data: session } = useSession();
   const { data: blog, isLoading } = useShowBlog(params.id);
-  const { data: blogs, isLoading: isLoadingBlogs } = useBlogs();
+
+  // Page pagination
+  const page = parseInt(searchParams?.page) || 1;
+
+  const { data: blogs, isLoading: isLoadingBlogs } = useBlogs(page);
 
   if (isLoading) return <BlogDetailLoader />;
 
@@ -36,9 +47,17 @@ const BlogDetailPage = ({ params }: Props) => {
             </div>
           </div>
         </div>
+
         <div className="col-span-6 w-full space-y-5 pb-20 md:col-span-4">
+          {session && (
+            <div className="space-x-5">
+              <EditBlogButton blogId={blog?.id} />
+              <DeleteBlogButton blogId={blog?.id} />
+            </div>
+          )}
+
           <small className="block text-center font-semibold text-primary">
-            {formatDate(blog?.created_at)}
+            {formatDate(blog?.createdAt)}
           </small>
 
           <h4 className="text-center text-3xl font-bold">{blog?.title}</h4>

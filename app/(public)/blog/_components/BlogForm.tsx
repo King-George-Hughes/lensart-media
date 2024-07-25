@@ -14,6 +14,7 @@ import { CldImage, CldUploadButton } from "next-cloudinary";
 import Spinner from "@/components/global/Spinner";
 import ErrorMessage from "@/components/global/ErrorMessage";
 import { Blog } from "@prisma/client";
+import { Button } from "@/components/ui/button";
 
 interface Props {
   blog?: Blog;
@@ -51,7 +52,7 @@ const BlogForm = ({ blog }: Props) => {
 
     if (isEditSession) {
       updateBlogMutation(
-        { newsData: data, id: blog.id },
+        { blogData: data, id: blog?.id! },
         {
           onSuccess: () => {
             router.push("/blog");
@@ -113,20 +114,26 @@ const BlogForm = ({ blog }: Props) => {
           )}
 
           {/* Button to upload image */}
-          <button className="bg-primary_color rounded-sm px-5 py-2 text-gray-50">
+          <Button className="rounded-sm bg-primary/70">
             <CldUploadButton
               uploadPreset="djkigxaq"
               options={{
                 sources: ["local", "camera"],
                 multiple: false,
                 maxFiles: 1,
-                accept: ["image/png", "image/jpeg", "image/jpg", "image/gif"],
               }}
               onUpload={(result) => {
                 const info = result.info;
-                if (info && typeof info === "object" && "public_id" in info) {
-                  setPublicId(info.public_id as string);
-                  setValue("image", `${info.secure_url}`.toString());
+
+                if (
+                  typeof result.info === "object" &&
+                  "secure_url" in result.info &&
+                  "public_id" in result.info
+                ) {
+                  const { secure_url, public_id } = result.info;
+
+                  setPublicId(public_id as string);
+                  setValue("image", secure_url as string);
                 }
               }}
             >
@@ -148,7 +155,7 @@ const BlogForm = ({ blog }: Props) => {
                 Upload
               </div>
             </CldUploadButton>
-          </button>
+          </Button>
 
           {/* Hidden image field */}
           <input

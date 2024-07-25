@@ -30,8 +30,9 @@ const Pagination = ({ itemCount, pageSize, currentPage }: Props) => {
     <div className="mt-5 flex w-full items-center justify-between gap-4">
       <p className="text-nowrap">
         page <span className="font-semibold">{currentPage}</span> out{" "}
-        <span className="font-semibold">{pageCount}</span> of{" "}
-        <span className="font-semibold">{itemCount}</span>
+        <span className="font-semibold">{pageCount}</span>
+        {/* of{" "}
+        <span className="font-semibold">{itemCount}</span> */}
       </p>
       <div className="flex items-center gap-3">
         {/* <Button

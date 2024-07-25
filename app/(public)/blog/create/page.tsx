@@ -7,7 +7,7 @@ const BlogForm = dynamic(() => import("../_components/BlogForm"), {
 
 const CreateBlogPage = () => {
   return (
-    <div className="mt-32">
+    <div className="mt-32 pb-20">
       <BlogForm />
     </div>
   );

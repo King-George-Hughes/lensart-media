@@ -1,13 +1,19 @@
 import axiosInstance from "@/services/axios-client";
+import { Blog } from "@prisma/client";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+
+interface Props {
+  blogData: Blog;
+  id: string;
+}
 
 const useUpdateBlog = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: ({ newsData, id }) =>
+    mutationFn: ({ blogData, id }: Props) =>
       axiosInstance
-        .patch(`/blog/${id}`, newsData)
+        .patch(`/blog/${id}`, blogData)
         .then(({ data }) => {
           return data;
         })
