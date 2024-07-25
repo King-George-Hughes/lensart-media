@@ -5,6 +5,7 @@ import Footer from "@/components/partials/Footer";
 import { cn } from "@/lib/utils";
 import NavBar from "@/components/partials/NavBar";
 import QueryProvider from "@/providers/QueryProvider";
+import AuthProvider from "./auth/Provider";
 
 const font = Montserrat({ subsets: ["latin"] });
 
@@ -22,9 +23,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={cn(font.className, "overflow-x-hidden")}>
         <QueryProvider>
-          <NavBar />
-          {children}
-          <Footer />
+          <AuthProvider>
+            <NavBar />
+            {children}
+            <Footer />
+          </AuthProvider>
         </QueryProvider>
       </body>
     </html>
