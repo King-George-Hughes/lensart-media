@@ -7,7 +7,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
-import { ChevronRight, MenuIcon } from "lucide-react";
+import { ChevronRight, LogIn, LogOut, MenuIcon, User } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ReactNode, useEffect, useState } from "react";
@@ -23,6 +23,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "../ui/sheet";
+import { useSession } from "next-auth/react";
 
 const navItems = [
   {
@@ -48,6 +49,7 @@ const navItems = [
 ];
 
 const NavBar = () => {
+  const { status, data: session } = useSession();
   const [activeNav, setActiveNav] = useState(false);
   const pathname = usePathname();
 
@@ -106,8 +108,33 @@ const NavBar = () => {
                 </Link>
               </NavigationMenuItem>
             ))}
+
+            {/* Authentication */}
+            <NavigationMenuItem key={"auth"}>
+              {status === "loading" && <div>Loading...</div>}
+              {status === "authenticated" && (
+                <div className="inline-flex items-center gap-1 py-3 text-lg font-medium text-gray-800 md:py-6">
+                  <div className="from-secondary_color_transparent to-primary_color_transparent inline-flex items-center gap-1 rounded-md bg-gradient-to-br p-3">
+                    <User size={20} /> {session.user?.name}
+                  </div>
+                  <Link
+                    href="/api/auth/signout"
+                    className="hover:text-secondary_color_transparent ml-3 inline-block"
+                  >
+                    <LogOut size={25} />
+                  </Link>
+                </div>
+              )}
+              {status === "unauthenticated" && (
+                <Link
+                  href="/api/auth/signin"
+                  className="hover:text-secondary_color_transparent ml-3 inline-block"
+                >
+                  <LogIn size={25} />
+                </Link>
+              )}
+            </NavigationMenuItem>
           </NavigationMenu>
-          {/*  */}
         </nav>
 
         {/* Menu Toggler */}
