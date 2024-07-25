@@ -1,10 +1,11 @@
 // import { Blog } from "@prisma/client";
+import { Blog } from "@/interfaces";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 interface Props {
-  blog: any;
+  blog: Blog;
 }
 
 const RelatedPost = ({ blog }: Props) => {

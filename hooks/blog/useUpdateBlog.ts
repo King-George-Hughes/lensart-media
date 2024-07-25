@@ -1,5 +1,5 @@
 import axiosInstance from "@/services/axios-client";
-import { Blog } from "@prisma/client";
+import { Blog } from "@/interfaces";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 interface Props {

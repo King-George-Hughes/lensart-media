@@ -1,5 +1,4 @@
-import { Blog as BlogData } from "@prisma/client";
-import { Edit } from "lucide-react";
+import { BlogData } from "@/interfaces";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axiosInstance from "@/services/axios-client";
-import { Blog } from "@prisma/client";
+import { Blog } from "@/interfaces";
 
 const useShowBlog = (id: string) => {
   return useQuery({

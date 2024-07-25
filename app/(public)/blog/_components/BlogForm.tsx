@@ -13,7 +13,7 @@ import "easymde/dist/easymde.min.css";
 import { CldImage, CldUploadButton } from "next-cloudinary";
 import Spinner from "@/components/global/Spinner";
 import ErrorMessage from "@/components/global/ErrorMessage";
-import { Blog } from "@prisma/client";
+import { Blog } from "@/interfaces";
 import { Button } from "@/components/ui/button";
 
 interface Props {
