@@ -5,6 +5,7 @@ import Blog from "./_components/Blog";
 import { BlogsLoader } from "./_components/BlogsLoader";
 import Pagination from "@/components/global/Paginate";
 import useBlogs from "@/hooks/blog/useBlogs";
+import CreateBlogButton from "./[id]/_components/CreateBlogButton";
 
 interface Props {
   searchParams: { page: string };
@@ -23,6 +24,8 @@ const BlogPage = ({ searchParams }: Props) => {
   return (
     <div className="w-full">
       <div className="container flex flex-col items-center justify-center pb-10 pt-24 md:pt-32">
+        <CreateBlogButton />
+
         <h3 className="text-3xl font-bold md:text-4xl">Our Blog</h3>
         <div className="my-8 grid w-full grid-cols-1 gap-7 font-light md:grid-cols-2 lg:grid-cols-3">
           {isLoading

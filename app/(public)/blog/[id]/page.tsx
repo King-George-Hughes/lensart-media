@@ -1,18 +1,15 @@
 "use client";
 
-import Image from "next/image";
-import React from "react";
-import ReactMarkdown from "react-markdown";
-import RelatedPost from "./_components/RelatedPost";
+import useBlogs from "@/hooks/blog/useBlogs";
 import useShowBlog from "@/hooks/blog/useShowBlog";
 import { formatDate } from "@/lib/helper";
-import BlogDetailLoader from "./_components/BlogDetailLoader";
-import useBlogs from "@/hooks/blog/useBlogs";
-import Link from "next/link";
-import { Edit } from "lucide-react";
-import EditBlogButton from "./_components/EditBlogButton";
-import DeleteBlogButton from "./_components/DeleteBlogButton";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
+import ReactMarkdown from "react-markdown";
+import BlogDetailLoader from "./_components/BlogDetailLoader";
+import DeleteBlogButton from "./_components/DeleteBlogButton";
+import EditBlogButton from "./_components/EditBlogButton";
+import RelatedPost from "./_components/RelatedPost";
 
 interface Props {
   params: { id: string };
