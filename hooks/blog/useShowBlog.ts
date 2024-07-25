@@ -1,14 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import { apiBlog } from "./useBlogs";
-import axiosClient from "@/services/axios-client";
 import { BlogData } from "@/lib/types";
+import axiosInstance from "@/services/axios-client";
 
-const useShowBlog = (slug: string) => {
+const useShowBlog = (id: string) => {
   return useQuery({
-    queryKey: [apiBlog, slug],
+    queryKey: ["blogs", id],
     queryFn: () =>
-      axiosClient
-        .get<BlogData>(`/${apiBlog}/${slug}`)
+      axiosInstance
+        .get<BlogData>(`/blog/${id}`)
         .then(({ data }) => data)
         .catch((error) => console.log(error)),
     retry: 3,

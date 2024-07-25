@@ -2,13 +2,23 @@
 
 import React, { Suspense } from "react";
 import Blog from "./_components/Blog";
-import { useBlogs } from "@/hooks/blog/useBlogs";
 import { BlogsLoader } from "./_components/BlogsLoader";
 import Pagination from "@/components/global/Paginate";
+import useBlogs from "@/hooks/blog/useBlogs";
 
-const BlogPageComponent = () => {
+interface Props {
+  searchParams: { page: string };
+}
+
+const BlogPage = ({ searchParams }: Props) => {
   const loadingSkeletons = [1, 2, 3];
-  const { data: blogs, isLoading } = useBlogs();
+
+  // Page pagination
+  const page = parseInt(searchParams?.page) || 1;
+  const pageSize = 6;
+
+  const { data: blogs, isLoading } = useBlogs(page);
+  console.log(blogs);
 
   return (
     <div className="w-full">
@@ -17,28 +27,27 @@ const BlogPageComponent = () => {
         <div className="my-8 grid w-full grid-cols-1 gap-7 font-light md:grid-cols-2 lg:grid-cols-3">
           {isLoading
             ? loadingSkeletons.map((skeleton) => <BlogsLoader key={skeleton} />)
-            : blogs?.data.map((blog, index) => (
+            : blogs?.blogs?.map((blog, index) => (
                 <Blog key={index} blog={blog} />
               ))}
         </div>
 
-        <div className="w-full">
-          <Pagination
-            count={blogs?.meta?.total!}
-            perPage={blogs?.meta?.per_page}
-          />
-        </div>
+        <Pagination
+          pageSize={pageSize}
+          currentPage={page}
+          itemCount={blogs?.count || 1}
+        />
       </div>
     </div>
   );
 };
 
-const BlogPage = () => {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <BlogPageComponent />
-    </Suspense>
-  );
-};
+// const BlogPage = () => {
+//   return (
+//     <Suspense fallback={<div>Loading...</div>}>
+//       <BlogPageComponent />
+//     </Suspense>
+//   );
+// };
 
 export default BlogPage;

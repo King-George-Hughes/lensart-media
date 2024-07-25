@@ -1,23 +1,18 @@
+import { Blog } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 interface Props {
-  blog: {
-    title?: string;
-    image: string;
-    description?: string;
-    createdAt?: string;
-    slug?: string;
-  };
+  blog: Blog;
 }
 
 const RelatedPost = ({ blog }: Props) => {
   return (
     <div className="flex w-full items-start gap-5">
-      <Link href={`/blog/${blog.slug}`}>
+      <Link href={`/blog/${blog.id}`}>
         <Image
-          src={blog.image}
+          src={blog.image!}
           width={100}
           height={100}
           alt={blog.title!}
@@ -25,7 +20,7 @@ const RelatedPost = ({ blog }: Props) => {
         />
       </Link>
       <div className="flex h-full items-center">
-        <Link href={`/blog/${blog.slug}`}>
+        <Link href={`/blog/${blog.id}`}>
           <h4 className="">{blog.title?.substring(0, 20)}...</h4>
         </Link>
       </div>

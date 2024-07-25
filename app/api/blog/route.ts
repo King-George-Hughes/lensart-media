@@ -3,9 +3,24 @@ import { createBlog } from "@/validations";
 import prisma from "@/prisma/client";
 
 export async function GET(request: NextRequest) {
-  const blog = await prisma.blog.findMany({ orderBy: { createdAt: "desc" } });
+  const { searchParams } = new URL(request.url);
 
-  return NextResponse.json(blog, { status: 200 });
+  // Page pagination
+  const page = searchParams.get("page") || 1;
+  const pageSize = 6;
+
+  // Query
+  const query = {
+    skip: (+page - 1) * pageSize,
+    take: pageSize,
+  };
+
+  const [blogs, count] = await prisma.$transaction([
+    prisma.blog.findMany(query),
+    prisma.blog.count(),
+  ]);
+
+  return NextResponse.json({ blogs, count }, { status: 200 });
 }
 
 export async function POST(request: NextRequest) {

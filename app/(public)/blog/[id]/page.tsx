@@ -6,15 +6,15 @@ import ReactMarkdown from "react-markdown";
 import RelatedPost from "./_components/RelatedPost";
 import useShowBlog from "@/hooks/blog/useShowBlog";
 import { formatDate } from "@/lib/helper";
-import { useBlogs } from "@/hooks/blog/useBlogs";
 import BlogDetailLoader from "./_components/BlogDetailLoader";
+import useBlogs from "@/hooks/blog/useBlogs";
 
 interface Props {
-  params: { slug: string };
+  params: { id: string };
 }
 
 const BlogDetailPage = ({ params }: Props) => {
-  const { data: blog, isLoading } = useShowBlog(params.slug);
+  const { data: blog, isLoading } = useShowBlog(params.id);
   const { data: blogs, isLoading: isLoadingBlogs } = useBlogs();
 
   if (isLoading) return <BlogDetailLoader />;
@@ -28,8 +28,8 @@ const BlogDetailPage = ({ params }: Props) => {
 
             <div className="grid grid-cols-1 gap-5">
               {!isLoadingBlogs &&
-                blogs?.data
-                  .slice(0, 4)
+                blogs?.blogs
+                  ?.slice(0, 4)
                   .map((blog, index) => (
                     <RelatedPost key={index} blog={blog} />
                   ))}
