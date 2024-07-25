@@ -116,7 +116,8 @@ const BlogForm = ({ blog }: Props) => {
           {/* Button to upload image */}
           <Button className="rounded-sm bg-primary/70">
             <CldUploadButton
-              uploadPreset="djkigxaq"
+              uploadPreset="nbhr6b8r"
+              // uploadPreset="djkigxaq"
               options={{
                 sources: ["local", "camera"],
                 multiple: false,

@@ -113,15 +113,15 @@ const NavBar = () => {
             <NavigationMenuItem key={"auth"}>
               {status === "loading" && <div>Loading...</div>}
               {status === "authenticated" && (
-                <div className="inline-flex items-center gap-1 py-3 text-lg font-medium text-gray-800 md:py-6">
-                  <div className="from-secondary_color_transparent to-primary_color_transparent inline-flex items-center gap-1 rounded-md bg-gradient-to-br p-3">
+                <div className="inline-flex items-center gap-1 text-lg font-medium text-gray-800">
+                  <div className="group inline-flex items-center gap-x-2 rounded-md bg-primary px-3 py-2 text-xs font-medium capitalize text-white focus:outline-none">
                     <User size={20} /> {session.user?.name}
                   </div>
                   <Link
                     href="/api/auth/signout"
                     className="hover:text-secondary_color_transparent ml-3 inline-block"
                   >
-                    <LogOut size={25} />
+                    <LogOut size={20} />
                   </Link>
                 </div>
               )}
@@ -130,7 +130,7 @@ const NavBar = () => {
                   href="/api/auth/signin"
                   className="hover:text-secondary_color_transparent ml-3 inline-block"
                 >
-                  <LogIn size={25} />
+                  <LogIn size={20} />
                 </Link>
               )}
             </NavigationMenuItem>
@@ -163,6 +163,29 @@ const NavBar = () => {
                       </Link>
                     </SheetClose>
                   ))}
+
+                  {status === "loading" && <div>Loading...</div>}
+                  {status === "authenticated" && (
+                    <div className="mt-5 inline-flex w-full items-center justify-around gap-1 text-lg font-medium text-gray-800">
+                      <div className="group inline-flex items-center gap-x-2 rounded-md bg-primary px-3 py-2 text-xs font-medium capitalize text-white focus:outline-none">
+                        <User size={20} /> {session.user?.name}
+                      </div>
+                      <Link
+                        href="/api/auth/signout"
+                        className="ml-3 inline-flex items-center gap-2 rounded-md bg-red-600 px-4 py-2 text-sm text-white"
+                      >
+                        <LogOut size={20} /> Logout
+                      </Link>
+                    </div>
+                  )}
+                  {status === "unauthenticated" && (
+                    <Link
+                      href="/api/auth/signin"
+                      className="ml-3 mt-5 inline-block text-primary"
+                    >
+                      <LogIn size={20} />
+                    </Link>
+                  )}
                 </div>
               </SheetDescription>
             </SheetHeader>

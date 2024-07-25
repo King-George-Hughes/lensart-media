@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense } from "react";
+import React from "react";
 import Blog from "./_components/Blog";
 import { BlogsLoader } from "./_components/BlogsLoader";
 import Pagination from "@/components/global/Paginate";
@@ -46,13 +46,5 @@ const BlogPage = ({ searchParams }: Props) => {
     </div>
   );
 };
-
-// const BlogPage = () => {
-//   return (
-//     <Suspense fallback={<div>Loading...</div>}>
-//       <BlogPageComponent />
-//     </Suspense>
-//   );
-// };
 
 export default BlogPage;
