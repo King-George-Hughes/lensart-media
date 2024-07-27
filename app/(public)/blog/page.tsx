@@ -26,9 +26,14 @@ const BlogPage = ({ searchParams }: Props) => {
   return (
     <div className="w-full">
       <div className="container flex flex-col items-center justify-center pb-10 pt-24 md:pt-32">
-        {session && <CreateBlogButton />}
-
-        <h3 className="text-3xl font-bold md:text-4xl">Our Blog</h3>
+        {session ? (
+          <div className="flex w-full items-center justify-center gap-5 lg:gap-10">
+            <h3 className="text-2xl font-bold md:text-3xl">Create a Blog </h3>
+            <CreateBlogButton />
+          </div>
+        ) : (
+          <h3 className="text-3xl font-bold md:text-4xl">Our Blog</h3>
+        )}
         <div className="my-8 grid w-full grid-cols-1 gap-7 font-light md:grid-cols-2 lg:grid-cols-3">
           {isLoading
             ? loadingSkeletons.map((skeleton) => <BlogsLoader key={skeleton} />)

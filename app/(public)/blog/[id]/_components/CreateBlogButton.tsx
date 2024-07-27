@@ -5,9 +5,9 @@ import React from "react";
 
 const CreateBlogButton = () => {
   return (
-    <Button className="bg-primary">
+    <Button className="bg-primary" size={"sm"}>
       <Link href={"/blog/create"} className="inline-flex items-center gap-2">
-        <Pencil />
+        <Pencil size={15} />
         Add Blog
       </Link>
     </Button>

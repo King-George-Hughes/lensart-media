@@ -40,13 +40,12 @@ const TheGalleryComponent = ({ title, subtitle }: Props) => {
   return (
     <div className="my-20 md:my-24">
       <div className="mb-5 text-center">
-        <h3 className="text-3xl font-bold lg:text-4xl">
+        <h3 className="pb-5 text-3xl font-bold lg:text-4xl">
           {title ? title : "Recent"}{" "}
           <span className="text-primary">
             {subtitle ? subtitle : "Gallery"}
           </span>
         </h3>
-        <div className="mx-auto my-5 h-[1.5px] w-[40px] bg-primary" />
       </div>
 
       <LightGallery

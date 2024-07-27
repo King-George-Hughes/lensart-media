@@ -114,7 +114,7 @@ const BlogForm = ({ blog }: Props) => {
           )}
 
           {/* Button to upload image */}
-          <Button className="rounded-sm bg-primary/70">
+          <Button className="rounded-sm bg-blue-600 hover:bg-blue-400">
             <CldUploadButton
               uploadPreset="nbhr6b8r"
               // uploadPreset="djkigxaq"
