@@ -70,7 +70,7 @@ const BlogForm = ({ blog }: Props) => {
 
   return (
     <div className="container p-5">
-      <h1 className="text-secondary_color my-5 text-start text-2xl font-bold uppercase lg:text-4xl">
+      <h1 className="text-secondary_color mx-auto my-5 w-full text-start text-xl font-bold uppercase lg:w-2/3 lg:text-2xl">
         {isEditSession ? "Edit Blog" : "Add a Blog"}
       </h1>
 

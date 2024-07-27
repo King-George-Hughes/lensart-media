@@ -17,7 +17,7 @@ const EditBlogPage = ({ params }: Props) => {
   if (isLoading) return <Spinner />;
 
   return (
-    <div className="mt-32 pb-20">
+    <div className="mt-10 pb-20 lg:mt-20">
       <BlogForm blog={blog} />
     </div>
   );

@@ -45,7 +45,7 @@ const BlogDetailPage = ({ params, searchParams }: Props) => {
           </div>
         </div>
 
-        <div className="col-span-6 w-full space-y-5 pb-20 md:col-span-4">
+        <div className="order-first col-span-6 w-full space-y-5 pb-20 md:col-span-4 lg:order-last">
           {session && (
             <div className="space-x-5">
               <EditBlogButton blogId={blog?.id} />

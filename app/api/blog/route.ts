@@ -13,6 +13,9 @@ export async function GET(request: NextRequest) {
   const query = {
     skip: (+page - 1) * pageSize,
     take: pageSize,
+    orderBy: {
+      createdAt: "desc" as const,
+    },
   };
 
   const [blogs, count] = await prisma.$transaction([
