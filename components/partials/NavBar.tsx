@@ -163,7 +163,13 @@ const NavBar = () => {
                       </Link>
                     </SheetClose>
                   ))}
+                </div>
+              </SheetDescription>
+            </SheetHeader>
 
+            <SheetFooter className="absolute bottom-[5%] left-[50%] translate-x-[-50%]">
+              <SheetClose asChild>
+                <div className="flex w-full items-center justify-center gap-7 text-black/90">
                   {status === "loading" && <div>Loading...</div>}
                   {status === "authenticated" && (
                     <div className="mt-5 inline-flex w-full items-center justify-around gap-1 text-lg font-medium text-gray-800">
@@ -186,16 +192,6 @@ const NavBar = () => {
                       <LogIn size={20} />
                     </Link>
                   )}
-                </div>
-              </SheetDescription>
-            </SheetHeader>
-
-            <SheetFooter className="absolute bottom-[5%] left-[50%] translate-x-[-50%]">
-              <SheetClose asChild>
-                <div className="flex w-full items-center justify-center gap-7 text-black/90">
-                  <FaInstagram size={15} />
-                  <FaXTwitter size={15} />
-                  <FaFacebookF size={15} />
                 </div>
               </SheetClose>
             </SheetFooter>

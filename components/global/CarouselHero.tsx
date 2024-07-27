@@ -65,9 +65,6 @@ export function CarouselHero({ data }: Props) {
 
                 <>
                   <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-full border-none bg-gradient-to-b from-black/80 via-transparent to-black/90" />
-
-                  {/* <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-32 border-none bg-gradient-to-b from-black/80" />
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 z-30 h-32 border-none bg-gradient-to-t from-black/80" /> */}
                 </>
               </div>
             </CarouselItem>
@@ -82,9 +79,10 @@ export function CarouselHero({ data }: Props) {
         className="container absolute z-10 flex flex-col items-center"
       >
         <MotionP className="py-4 text-center text-white/90">
-          <span className="text-xl md:text-3xl">Welcome to</span> <br />
+          <span className="text-xl font-bold md:text-3xl">Welcome to</span>{" "}
           <br />
-          <span className="text-3xl font-bold text-primary md:text-5xl">
+          <br />
+          <span className="text-3xl font-bold uppercase text-primary md:text-5xl">
             Lensart Media
           </span>
         </MotionP>

@@ -51,7 +51,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="inline-flex h-[50px] w-full items-center justify-center gap-7 bg-primary/90 tracking-wider text-slate-100">
+        <div className="inline-flex h-[50px] w-full items-center justify-center gap-7 bg-white tracking-wider text-slate-800">
           <Link href={"#!"} className="inline-flex items-center gap-2 text-xs">
             <FaTiktok size={20} />
           </Link>
