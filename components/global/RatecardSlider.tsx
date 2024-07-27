@@ -14,32 +14,26 @@ const ratecardImages = [
   {
     title: "Studio",
     image:
-      "https://res.cloudinary.com/dg4k5afvg/image/upload/w_800,q_80/v1717932585/stepford/studio/5_e4wcyj.jpg",
+      "https://res.cloudinary.com/dg4k5afvg/image/upload/w_800,q_80/v1722042045/lensart/IMG_5770_e6se9r.jpg",
     price: 35,
   },
   {
     title: "Lifestyle",
     image:
-      "https://res.cloudinary.com/dg4k5afvg/image/upload/w_800,q_80/v1717932594/stepford/studio/12_solz2l.jpg",
+      "https://res.cloudinary.com/dg4k5afvg/image/upload/w_800,q_80/v1722042048/lensart/IMG_5793_g3folu.jpg",
     price: 29,
   },
 
   {
     title: "Weddings",
     image:
-      "https://res.cloudinary.com/dg4k5afvg/image/upload/w_800,q_80/v1717932561/stepford/studio/43_zdtcdc.jpg",
+      "https://res.cloudinary.com/dg4k5afvg/image/upload/w_800,q_80/v1722042048/lensart/IMG_5778_rtgvzi.jpg",
     price: 49,
   },
   {
-    title: "Commercials",
+    title: "Shoots",
     image:
-      "https://res.cloudinary.com/dg4k5afvg/image/upload/w_800,q_80/v1717932548/stepford/studio/28_pkcazg.jpg",
-    price: 99,
-  },
-  {
-    title: "Events",
-    image:
-      "https://res.cloudinary.com/dg4k5afvg/image/upload/w_800,q_80/v1717932558/stepford/studio/41_kqv4sa.jpg",
+      "https://res.cloudinary.com/dg4k5afvg/image/upload/w_800,q_80/v1722042029/lensart/IMG_5788_nshgsn.jpg",
     price: 50,
   },
 ];
@@ -77,14 +71,14 @@ export function RatecardSlider() {
                 alt={image.title}
                 className="absolute h-full w-full object-cover object-top"
               />
-              <div className="absolute top-0 flex w-full flex-col items-center justify-center">
-                <div className="h-[30px] w-[2px] bg-primary" />
+              <div className="absolute right-0 top-0 flex w-[50%] flex-col items-center justify-center">
+                {/* <div className="h-[30px] w-[2px] bg-primary" /> */}
 
                 <p className="mt-2 text-lg font-bold uppercase text-slate-900">
                   {image.title}
                 </p>
 
-                <p className="mt-5 text-8xl font-bold uppercase tracking-wider text-black/90">
+                <p className="mt-5 text-5xl font-bold uppercase tracking-wider text-black/90 lg:text-8xl">
                   ${image.price}
                 </p>
               </div>

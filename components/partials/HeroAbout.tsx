@@ -13,7 +13,7 @@ const HeroAbout = () => {
             className="relative mx-auto h-[400px] w-full overflow-hidden rounded-lg md:h-[500px] lg:h-[600px]"
           >
             <Image
-              src="/images/IMG_8205.jpg"
+              src="https://res.cloudinary.com/dg4k5afvg/image/upload/t_Banner 16:9/v1722042111/lensart/IMG_9841_adpjmm.jpg"
               // src="/images/whats-new.png"
               width={800}
               height={800}

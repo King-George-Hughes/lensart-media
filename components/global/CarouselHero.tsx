@@ -13,10 +13,7 @@ import {
 import { MotionDiv, MotionP } from "../motion/MotionContainer";
 
 interface ImageDataProps {
-  title: string;
   image: string;
-  url?: string;
-  urlName?: string;
 }
 
 interface Props {
@@ -62,13 +59,15 @@ export function CarouselHero({ data }: Props) {
                   width={1200}
                   height={1200}
                   priority
-                  alt={image.title}
+                  alt={"background image"}
                   className="absolute h-full w-full object-cover"
                 />
 
                 <>
-                  <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-32 border-none bg-gradient-to-b from-black/80" />
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 z-30 h-32 border-none bg-gradient-to-t from-black/80" />
+                  <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-full border-none bg-gradient-to-b from-black/80 via-transparent to-black/90" />
+
+                  {/* <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-32 border-none bg-gradient-to-b from-black/80" />
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 z-30 h-32 border-none bg-gradient-to-t from-black/80" /> */}
                 </>
               </div>
             </CarouselItem>
