@@ -21,9 +21,9 @@ const BlogDetailPage = ({ params, searchParams }: Props) => {
   const { data: blog, isLoading } = useShowBlog(params.id);
 
   // Page pagination
-  // const page = parseInt(searchParams?.page) || 1;
+  const page = parseInt(searchParams?.page) || 1;
 
-  // const { data: blogs, isLoading: isLoadingBlogs } = useBlogs(page);
+  const { data: blogs, isLoading: isLoadingBlogs } = useBlogs(page);
 
   if (isLoading) return <BlogDetailLoader />;
 
@@ -34,14 +34,14 @@ const BlogDetailPage = ({ params, searchParams }: Props) => {
           <div className="w-full rounded-lg border-2 p-5">
             <h4 className="mb-8 text-xl font-bold">Related Posts</h4>
 
-            {/* <div className="grid grid-cols-1 gap-5">
+            <div className="grid grid-cols-1 gap-5">
               {!isLoadingBlogs &&
                 blogs?.blogs
                   ?.slice(0, 4)
                   .map((blog, index) => (
                     <RelatedPost key={index} blog={blog} />
                   ))}
-            </div> */}
+            </div>
           </div>
         </div>
 
