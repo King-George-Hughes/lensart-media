@@ -11,8 +11,8 @@ const useUpdateBlog = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: ({ blogData, id }: Props) =>
-      axiosInstance
+    mutationFn: async ({ blogData, id }: Props) =>
+      await axiosInstance
         .patch(`/blog/${id}`, blogData)
         .then(({ data }) => {
           return data;

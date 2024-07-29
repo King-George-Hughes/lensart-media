@@ -12,8 +12,8 @@ const useBlogs = (page?: number) => {
 
   return useQuery({
     queryKey: ["blogs", page],
-    queryFn: () =>
-      axiosInstance
+    queryFn: async () =>
+      await axiosInstance
         .get<BlogResponse>(query)
         .then(({ data }) => data)
         .catch((error) => console.log(error)),

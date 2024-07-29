@@ -5,8 +5,8 @@ const useCreateBlog = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (blogData) =>
-      axiosInstance
+    mutationFn: async (blogData) =>
+      await axiosInstance
         .post("/blog", blogData)
         .then(({ data }) => {
           return data;

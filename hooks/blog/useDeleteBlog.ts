@@ -9,8 +9,8 @@ const useDeleteBlog = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: ({ id }: Props) =>
-      axiosInstance
+    mutationFn: async ({ id }: Props) =>
+      await axiosInstance
         .delete(`/blog/${id}`)
         .then(() => {})
         .catch((error) => console.log(error)),
