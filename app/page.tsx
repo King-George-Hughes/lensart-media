@@ -15,6 +15,12 @@ export default function Home() {
       </div>
 
       <div className="my-20" />
+      <div className="mb-5 text-center">
+        <h3 className="pb-5 text-3xl font-bold lg:text-4xl">
+          Rate
+          <span className="text-primary">cards</span>
+        </h3>
+      </div>
       <RatecardSlider />
 
       <div className="container">

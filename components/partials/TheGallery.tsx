@@ -1,24 +1,22 @@
 "use client";
 
-import React, { Suspense } from "react";
 import LightGallery from "lightgallery/react";
+import { Suspense } from "react";
 
 // import styles
-import "lightgallery/css/lightgallery.css";
-import "lightgallery/css/lg-zoom.css";
 import "lightgallery/css/lg-thumbnail.css";
+import "lightgallery/css/lg-zoom.css";
+import "lightgallery/css/lightgallery.css";
 
 // import plugins if you need
-import lgZoom from "lightgallery/plugins/zoom";
+import LazyLoadImage from "@/components/global/LazyLoadImage";
+import { Button } from "@/components/ui/button";
+import useImages from "@/hooks/image/useImages";
 import lgAutoplay from "lightgallery/plugins/autoplay";
 import lgVideo from "lightgallery/plugins/video";
-import Link from "next/link";
-import LazyLoadImage from "@/components/global/LazyLoadImage";
-import { useSearchParams } from "next/navigation";
-import useImages from "@/hooks/image/useImages";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import lgZoom from "lightgallery/plugins/zoom";
 import { ChevronDown } from "lucide-react";
+import Link from "next/link";
 import Spinner from "../global/Spinner";
 
 interface Props {
@@ -27,9 +25,6 @@ interface Props {
 }
 
 const TheGalleryComponent = ({ title, subtitle }: Props) => {
-  const searchParams = useSearchParams();
-  const selectedValue = searchParams.get("gallery");
-
   // const pageSize = 20;
   const { data, fetchNextPage, hasNextPage, isFetching, isFetchingNextPage } =
     useImages();
@@ -59,7 +54,7 @@ const TheGalleryComponent = ({ title, subtitle }: Props) => {
           <Link key={index} href={image.image}>
             <LazyLoadImage
               image={image.image}
-              alt={image.title}
+              // alt={image.title}
               className={"mb-5 rounded-lg hover:scale-[1.02]"}
             />
           </Link>
@@ -78,7 +73,11 @@ const TheGalleryComponent = ({ title, subtitle }: Props) => {
             Load More <ChevronDown size={20} />
           </Button>
         )}
-        {isFetchingNextPage && <Spinner />}
+        {isFetchingNextPage && (
+          <Button className="bg-primary" size={"sm"}>
+            <Spinner />
+          </Button>
+        )}
       </div>
     </div>
   );
