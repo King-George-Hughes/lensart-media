@@ -10,7 +10,6 @@ import "lightgallery/css/lightgallery.css";
 // import plugins if you need
 import LazyLoadImage from "@/components/global/LazyLoadImage";
 import { Button } from "@/components/ui/button";
-import useImages from "@/hooks/image/useImages";
 import lgAutoplay from "lightgallery/plugins/autoplay";
 import lgVideo from "lightgallery/plugins/video";
 import lgZoom from "lightgallery/plugins/zoom";

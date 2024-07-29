@@ -115,7 +115,7 @@ const AddGallery = () => {
         className="inline-flex items-center justify-center gap-2 border-primary text-primary"
       >
         Add
-        {isCreatingGallery && <Spinner />}
+        {isCreatingGallery && <Spinner color="text-primary" />}
       </Button>
     </form>
   );

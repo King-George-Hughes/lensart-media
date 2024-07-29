@@ -1,8 +1,8 @@
 import React from "react";
 
-const Spinner = () => {
+const Spinner = ({ color }: { color?: string }) => {
   return (
-    <div className="inline-flex items-center text-white">
+    <div className={`inline-flex items-center ${color ? color : "text-white"}`}>
       <svg
         width="20"
         height="20"
