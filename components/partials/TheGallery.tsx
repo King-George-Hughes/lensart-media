@@ -1,7 +1,6 @@
 "use client";
 
 import LightGallery from "lightgallery/react";
-import { Suspense } from "react";
 
 // import styles
 import "lightgallery/css/lg-thumbnail.css";
@@ -18,29 +17,47 @@ import lgZoom from "lightgallery/plugins/zoom";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import Spinner from "../global/Spinner";
+import { useSession } from "next-auth/react";
+import AddGallery from "@/app/(public)/gallery/_components/AddGallery";
+import useGallery from "@/hooks/gallery/useGallery";
+import { imageQualityReducer } from "@/lib/helper";
 
 interface Props {
   title?: string;
   subtitle?: string;
 }
 
-const TheGalleryComponent = ({ title, subtitle }: Props) => {
+const TheGallery = ({ title, subtitle }: Props) => {
+  const { data: session } = useSession();
   // const pageSize = 20;
   const { data, fetchNextPage, hasNextPage, isFetching, isFetchingNextPage } =
-    useImages();
+    useGallery();
+  // const { data, fetchNextPage, hasNextPage, isFetching, isFetchingNextPage } =
+  //   useImages();
   // useImages(pageSize);
+  const lola = imageQualityReducer(
+    "https://res.cloudinary.com/dyzimzurm/image/upload/v1722265648/emp47ivhx2tets5enqkg.jpg",
+  );
+  console.log(lola);
 
   const filteredImages = data?.pages.flatMap((page) => page) || [];
 
   return (
     <div className="my-20 md:my-24">
       <div className="mb-5 text-center">
-        <h3 className="pb-5 text-3xl font-bold lg:text-4xl">
-          {title ? title : "Recent"}{" "}
-          <span className="text-primary">
-            {subtitle ? subtitle : "Gallery"}
-          </span>
-        </h3>
+        {session ? (
+          <div className="flex w-full items-center justify-center gap-5 lg:gap-10">
+            <h3 className="text-2xl font-bold md:text-3xl">Add gallery </h3>
+            <AddGallery />
+          </div>
+        ) : (
+          <h3 className="pb-5 text-3xl font-bold lg:text-4xl">
+            {title ? title : "Recent"}{" "}
+            <span className="text-primary">
+              {subtitle ? subtitle : "Gallery"}
+            </span>
+          </h3>
+        )}
       </div>
 
       <LightGallery
@@ -53,7 +70,7 @@ const TheGalleryComponent = ({ title, subtitle }: Props) => {
         {filteredImages.map((image, index) => (
           <Link key={index} href={image.image}>
             <LazyLoadImage
-              image={image.image}
+              image={imageQualityReducer(image.image)}
               // alt={image.title}
               className={"mb-5 rounded-lg hover:scale-[1.02]"}
             />
@@ -80,14 +97,6 @@ const TheGalleryComponent = ({ title, subtitle }: Props) => {
         )}
       </div>
     </div>
-  );
-};
-
-const TheGallery = ({ title, subtitle }: Props) => {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <TheGalleryComponent title={title} subtitle={subtitle} />
-    </Suspense>
   );
 };
 

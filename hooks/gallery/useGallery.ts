@@ -1,8 +1,8 @@
 import { parallaxImages } from "@/lib/constant";
+import axiosInstance from "@/services/axios-client";
 import { useInfiniteQuery } from "@tanstack/react-query";
 
 interface Image {
-  title: string;
   image: string;
 }
 
@@ -11,16 +11,17 @@ const pageSize = 20;
 const fetchImages = async (page: number) => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
-  return parallaxImages.slice((page - 1) * pageSize, page * pageSize);
+  return await axiosInstance.get("/gallery").then(({ data }) => {
+    console.log(data);
+    return data.slice((page - 1) * pageSize, page * pageSize);
+  });
 };
 
-const useImages = () =>
+const useGallery = () =>
   useInfiniteQuery({
-    queryKey: ["images"],
-    queryFn: async ({ pageParam = 1 }) => {
-      const response = await fetchImages(pageParam);
-      return response;
-    },
+    queryKey: ["gallery"],
+    queryFn: async ({ pageParam = 1 }) => await fetchImages(pageParam),
+
     initialPageParam: 1,
     getNextPageParam: (_, pages) => {
       return pages.length + 1;
@@ -31,4 +32,4 @@ const useImages = () =>
     },
   });
 
-export default useImages;
+export default useGallery;

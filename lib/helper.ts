@@ -17,4 +17,9 @@ const formatDate = (dateString: any) => {
   // return date.toLocaleDateString("en-US", mergedOptions);
 };
 
-export { formatDate };
+const imageQualityReducer = (url: string) => {
+  const splitUrl = url.split("/upload/");
+  return `${splitUrl[0]}/upload/w_800,q_80/${splitUrl[1]}`;
+};
+
+export { formatDate, imageQualityReducer };

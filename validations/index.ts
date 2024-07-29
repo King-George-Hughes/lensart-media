@@ -17,3 +17,7 @@ export const updateBlog = z.object({
   description: z.string().min(1, { message: "Description is required!" }),
   image: z.string().min(1, { message: "Image is required!" }).optional(),
 });
+
+export const createGallery = z.object({
+  image: z.string().min(1, { message: "Image is required!" }),
+});
