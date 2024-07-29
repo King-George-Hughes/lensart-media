@@ -1,4 +1,4 @@
-import { parallaxImages } from "@/lib/constant";
+// import { parallaxImages } from "@/lib/constant";
 import axiosInstance from "@/services/axios-client";
 import { useInfiniteQuery } from "@tanstack/react-query";
 
@@ -26,10 +26,10 @@ const useGallery = () =>
     getNextPageParam: (_, pages) => {
       return pages.length + 1;
     },
-    initialData: {
-      pages: [parallaxImages.slice(0, pageSize)],
-      pageParams: [1],
-    },
+    // initialData: {
+    //   pages: [parallaxImages.slice(0, pageSize)],
+    //   pageParams: [1],
+    // },
   });
 
 export default useGallery;

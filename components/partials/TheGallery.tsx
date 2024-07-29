@@ -29,16 +29,9 @@ interface Props {
 
 const TheGallery = ({ title, subtitle }: Props) => {
   const { data: session } = useSession();
-  // const pageSize = 20;
+
   const { data, fetchNextPage, hasNextPage, isFetching, isFetchingNextPage } =
     useGallery();
-  // const { data, fetchNextPage, hasNextPage, isFetching, isFetchingNextPage } =
-  //   useImages();
-  // useImages(pageSize);
-  const lola = imageQualityReducer(
-    "https://res.cloudinary.com/dyzimzurm/image/upload/v1722265648/emp47ivhx2tets5enqkg.jpg",
-  );
-  console.log(lola);
 
   const filteredImages = data?.pages.flatMap((page) => page) || [];
 
@@ -70,8 +63,11 @@ const TheGallery = ({ title, subtitle }: Props) => {
         {filteredImages.map((image, index) => (
           <Link key={index} href={image.image}>
             <LazyLoadImage
-              image={imageQualityReducer(image.image)}
-              // alt={image.title}
+              image={`${image.image.replace(
+                "/upload/",
+                "/upload/w_800,q_80/",
+              )}`}
+              // image={imageQualityReducer(image.image)}
               className={"mb-5 rounded-lg hover:scale-[1.02]"}
             />
           </Link>
@@ -83,7 +79,6 @@ const TheGallery = ({ title, subtitle }: Props) => {
         {!isFetchingNextPage && hasNextPage && (
           <Button
             onClick={() => fetchNextPage()}
-            // variant={"link"}
             size={"sm"}
             className="inline-flex items-center gap-2"
           >

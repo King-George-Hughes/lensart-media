@@ -41,6 +41,7 @@ const AddGallery = () => {
     createGalleryMutation(data, {
       onSuccess: () => {
         router.push("/gallery");
+        window.location.reload();
       },
     });
   };
@@ -58,7 +59,10 @@ const AddGallery = () => {
         )}
 
         {/* Button to upload image */}
-        <Button className="rounded-sm bg-blue-600 hover:bg-blue-400">
+        <Button
+          size={"sm"}
+          className="rounded-sm bg-blue-600 hover:bg-blue-400"
+        >
           <CldUploadButton
             uploadPreset="nbhr6b8r"
             options={{
@@ -86,7 +90,7 @@ const AddGallery = () => {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="h-6 w-6"
+                className="h-4 w-4"
               >
                 <path
                   strokeLinecap="round"
@@ -104,13 +108,15 @@ const AddGallery = () => {
         <ErrorMessage>{errors.image?.message}</ErrorMessage>
       </div>
 
-      <button
+      <Button
+        size={"sm"}
+        variant={"outline"}
         disabled={isCreatingGallery}
-        className="inline-flex w-[150px] items-center justify-center gap-2 rounded-sm bg-primary p-2 text-white"
+        className="inline-flex items-center justify-center gap-2 border-primary text-primary"
       >
-        Add image
+        Add
         {isCreatingGallery && <Spinner />}
-      </button>
+      </Button>
     </form>
   );
 };
