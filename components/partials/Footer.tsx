@@ -26,7 +26,7 @@ const Footer = () => {
 
             <div className="mb-5 mt-3 h-[2px] w-[50px] border-none bg-primary" />
 
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid gap-2 lg:grid-cols-2">
               <Link href={"/gallery"}>Gallery</Link>
               <Link href={"/blog"}>Blog</Link>
               <Link href={"/contact"}>Contact us</Link>
