@@ -20,6 +20,7 @@ import { useSession } from "next-auth/react";
 import AddGallery from "@/app/(public)/gallery/_components/AddGallery";
 import useGallery from "@/hooks/gallery/useGallery";
 import { imageQualityReducer } from "@/lib/helper";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface Props {
   title?: string;
@@ -27,10 +28,17 @@ interface Props {
 }
 
 const TheGallery = ({ title, subtitle }: Props) => {
+  const skeletons = [1, 2, 3];
   const { data: session } = useSession();
 
-  const { data, fetchNextPage, hasNextPage, isFetching, isFetchingNextPage } =
-    useGallery();
+  const {
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isFetching,
+    isLoading,
+    isFetchingNextPage,
+  } = useGallery();
 
   const filteredImages = data?.pages.flatMap((page) => page) || [];
 
@@ -59,18 +67,25 @@ const TheGallery = ({ title, subtitle }: Props) => {
         pager={false}
         autoplayFirstVideo={false}
       >
-        {filteredImages.map((image, index) => (
-          <Link key={index} href={image.image}>
-            <LazyLoadImage
-              image={`${image.image.replace(
-                "/upload/",
-                "/upload/w_800,q_80/",
-              )}`}
-              // image={imageQualityReducer(image.image)}
-              className={"mb-5 rounded-lg hover:scale-[1.02]"}
-            />
-          </Link>
-        ))}
+        {isLoading
+          ? skeletons.map((skeleton) => (
+              <Skeleton
+                className="mb-5 h-[400px] w-full rounded-lg"
+                key={skeleton}
+              />
+            ))
+          : filteredImages.map((image, index) => (
+              <Link key={index} href={image.image}>
+                <LazyLoadImage
+                  // image={`${image.image.replace(
+                  //   "/upload/",
+                  //   "/upload/w_800,q_80/",
+                  // )}`}
+                  image={imageQualityReducer(image.image)}
+                  className={"mb-5 rounded-lg"}
+                />
+              </Link>
+            ))}
       </LightGallery>
 
       <div className="relative my-10 flex h-fit w-full items-center justify-center">
