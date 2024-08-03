@@ -17,12 +17,15 @@ export async function POST(request: NextRequest) {
 
   const validation = createGallery.safeParse(body);
 
-  if (!validation.success)
+  if (!validation.success) {
     return NextResponse.json(validation.error.errors, { status: 400 });
+  }
 
   const newGallery = await prisma.gallery.create({
     data: {
-      image: body.image,
+      images: {
+        set: body.images, // Save the images array
+      },
     },
   });
 

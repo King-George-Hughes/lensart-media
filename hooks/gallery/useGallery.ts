@@ -2,11 +2,7 @@
 import axiosInstance from "@/services/axios-client";
 import { useInfiniteQuery } from "@tanstack/react-query";
 
-interface Image {
-  image: string;
-}
-
-const pageSize = 20;
+const pageSize = 2;
 
 const fetchImages = async (page: number) => {
   await new Promise((resolve) => setTimeout(resolve, 1000));

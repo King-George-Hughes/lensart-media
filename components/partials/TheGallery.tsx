@@ -21,6 +21,7 @@ import AddGallery from "@/app/(public)/gallery/_components/AddGallery";
 import useGallery from "@/hooks/gallery/useGallery";
 import { imageQualityReducer } from "@/lib/helper";
 import { Skeleton } from "@/components/ui/skeleton";
+import React from "react";
 
 interface Props {
   title?: string;
@@ -46,7 +47,7 @@ const TheGallery = ({ title, subtitle }: Props) => {
     <div className="my-20 md:my-24">
       <div className="mb-5 text-center">
         {session ? (
-          <div className="flex w-full items-center justify-center gap-5 lg:gap-10">
+          <div className="flex w-full flex-col items-center justify-center gap-5 lg:gap-5">
             <h3 className="text-2xl font-bold md:text-3xl">Add gallery </h3>
             <AddGallery />
           </div>
@@ -74,17 +75,17 @@ const TheGallery = ({ title, subtitle }: Props) => {
                 key={skeleton}
               />
             ))
-          : filteredImages.map((image, index) => (
-              <Link key={index} href={image.image}>
-                <LazyLoadImage
-                  // image={`${image.image.replace(
-                  //   "/upload/",
-                  //   "/upload/w_800,q_80/",
-                  // )}`}
-                  image={imageQualityReducer(image.image)}
-                  className={"mb-5 rounded-lg"}
-                />
-              </Link>
+          : filteredImages.map((images, index) => (
+              <React.Fragment key={index + 1}>
+                {images.images.map((image: string, i: number) => (
+                  <Link key={i + 1} href={image}>
+                    <LazyLoadImage
+                      image={imageQualityReducer(image)}
+                      className={"mb-5 rounded-lg"}
+                    />
+                  </Link>
+                ))}
+              </React.Fragment>
             ))}
       </LightGallery>
 

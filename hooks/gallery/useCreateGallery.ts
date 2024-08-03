@@ -8,9 +8,7 @@ const useCreateGallery = () => {
     mutationFn: async (galleryData) =>
       await axiosInstance
         .post("/gallery", galleryData)
-        .then(({ data }) => {
-          return data;
-        })
+        .then(({ data }) => data)
         .catch((error) => console.log(error)),
 
     onSuccess: () => {
@@ -23,5 +21,29 @@ const useCreateGallery = () => {
     },
   });
 };
+
+// const useCreateGallery = () => {
+//   const queryClient = useQueryClient();
+
+//   return useMutation({
+//     mutationFn: async ({ galleryData }: any) =>
+//       // mutationFn: async (galleryData) =>
+//       await axiosInstance
+//         .post("/gallery", galleryData)
+//         .then(({ data }) => {
+//           return data;
+//         })
+//         .catch((error) => console.log(error)),
+
+//     onSuccess: () => {
+//       queryClient.invalidateQueries({
+//         queryKey: ["gallery"],
+//       });
+//     },
+//     onError: (error) => {
+//       console.log(error);
+//     },
+//   });
+// };
 
 export default useCreateGallery;

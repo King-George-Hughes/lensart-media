@@ -19,5 +19,6 @@ export const updateBlog = z.object({
 });
 
 export const createGallery = z.object({
-  image: z.string().min(1, { message: "Image is required!" }),
+  // image: z.string().min(1, { message: "Image is required!" }),
+  images: z.any(),
 });
