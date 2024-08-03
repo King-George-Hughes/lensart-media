@@ -1,8 +1,7 @@
-// import { parallaxImages } from "@/lib/constant";
 import axiosInstance from "@/services/axios-client";
 import { useInfiniteQuery } from "@tanstack/react-query";
 
-const pageSize = 2;
+const pageSize = 10;
 
 const fetchImages = async (page: number) => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
